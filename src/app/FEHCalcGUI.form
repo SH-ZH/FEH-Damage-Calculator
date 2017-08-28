@@ -4,6 +4,14 @@
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="adeptRadioGroup">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="defTerrainRadioGroup">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="weaponTriangleRadioGroup">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="effectiveRadioGroup">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="staffRadioGroup">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -32,12 +40,25 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="defenseInput" linkSize="1" min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="attackInput" min="-2" pref="47" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="defenseLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="attackLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="defSpecialInput" linkSize="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="defSpecialLabel" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="damageOutput" linkSize="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="statConsideredInput" linkSize="1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="damageLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="statConsideredLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="calcButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="adeptRadio1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -47,28 +68,47 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="adeptRadioNone" min="-2" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="adeptLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="atkSpecialLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="atkSpecialInput" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="defenseInput" linkSize="1" min="-2" pref="47" max="-2" attributes="0"/>
-                                  <Component id="attackInput" min="-2" pref="47" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="defenseLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="attackLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="staffYes" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="staffNo" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="staffLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="effectiveYes" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="effectiveNo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="effectiveLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="weaponTriangleAd" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="weaponTriangleDis" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="weaponTriangleNone" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="weaponTriangleLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="defTerrainYes" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="defTerrainNo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="defTerrainLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="damageOutput" linkSize="1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="damageLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="calcButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="288" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="42" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
+          <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -84,18 +124,62 @@
                   <Component id="defenseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="defenseInput" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Component id="adeptLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="staffLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="staffYes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="staffNo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="effectiveLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="effectiveYes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="effectiveNo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="weaponTriangleLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="weaponTriangleAd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="weaponTriangleDis" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="weaponTriangleNone" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="defTerrainLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="defTerrainYes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="defTerrainNo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+              <Component id="adeptLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="adeptRadio1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="adeptRadio2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="adeptRadio3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="adeptRadioNone" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="75" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Component id="atkSpecialLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <Component id="atkSpecialInput" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="statConsideredInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="statConsideredLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="defSpecialLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <Component id="defSpecialInput" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="calcButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="damageOutput" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="damageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -111,7 +195,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="adeptRadioGroup"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#x76f8;&#x6027;&#x6fc0;&#x5316;1"/>
+        <Property name="text" type="java.lang.String" value="Adept 1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="attackLabel">
@@ -127,7 +211,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="adeptRadioGroup"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#x76f8;&#x6027;&#x6fc0;&#x5316;2"/>
+        <Property name="text" type="java.lang.String" value="Adept 2"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="defenseLabel">
@@ -143,7 +227,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="adeptRadioGroup"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#x76f8;&#x6027;&#x6fc0;&#x5316;3"/>
+        <Property name="text" type="java.lang.String" value="Adept 3"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="attackInput">
@@ -172,7 +256,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="adeptLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x76f8;&#x6027;&#x6fc0;&#x5316;"/>
+        <Property name="text" type="java.lang.String" value="Triangle Adept"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="damageOutput">
@@ -184,6 +268,182 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Damage"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="atkSpecialInput">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="18">
+            <StringItem index="0" value="Aether (Def/Res x 0.5)"/>
+            <StringItem index="1" value="Astra (Damage x 2.5)"/>
+            <StringItem index="2" value="Bonfire (Def x 0.5 added)"/>
+            <StringItem index="3" value="Chilling Wind (Res x 0.5 added)"/>
+            <StringItem index="4" value="Draconic Aura (Atk x 0.3 added)"/>
+            <StringItem index="5" value="Dragon Fang (Atk x 0.5 added)"/>
+            <StringItem index="6" value="Dragon Gaze (Atk x 0.3 added)"/>
+            <StringItem index="7" value="Glacies (Res x 0.8 added)"/>
+            <StringItem index="8" value="Glimmer (Damage x 1.5)"/>
+            <StringItem index="9" value="Glowing Ember (Def x 0.5 added)"/>
+            <StringItem index="10" value="Iceberg (Res x 0.5 added)"/>
+            <StringItem index="11" value="Ignis (Def x 0.8 added)"/>
+            <StringItem index="12" value="Moonbow (Def/Res x 0.7)"/>
+            <StringItem index="13" value="New Moon (Def/Res x 0.7)"/>
+            <StringItem index="14" value="Night Sky (Def/Res x 0.5)"/>
+            <StringItem index="15" value="Reprisal (Damage Received x 0.3 added)"/>
+            <StringItem index="16" value="Retribution (Damage Received x 0.3 added)"/>
+            <StringItem index="17" value="Vengeance (Damage Received x 0.5 added)"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atkSpecialInputActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="defSpecialInput">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="6">
+            <StringItem index="0" value="Aegis (Damage x 0.5)"/>
+            <StringItem index="1" value="Buckler (Damage x 0.3)"/>
+            <StringItem index="2" value="Escutcheon (Damage x 0.3)"/>
+            <StringItem index="3" value="Holy Vestments (Damage  x 0.3)"/>
+            <StringItem index="4" value="Pavise (Damage x 0.5)"/>
+            <StringItem index="5" value="Sacred Cowl (Damage x 0.3)"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="atkSpecialLabel">
+      <Properties>
+        <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="atkSpecialInput"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Attacking Special"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="defSpecialLabel">
+      <Properties>
+        <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="defSpecialInput"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Defending Special"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="defTerrainLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Defensive Terrain"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="defTerrainYes">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="defTerrainRadioGroup"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Yes"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="defTerrainYesActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="defTerrainNo">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="defTerrainRadioGroup"/>
+        </Property>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="No"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="weaponTriangleLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Weapon Triangle"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="weaponTriangleAd">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="weaponTriangleRadioGroup"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Advantage"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="weaponTriangleDis">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="weaponTriangleRadioGroup"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Disadvantage"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="weaponTriangleDisActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="weaponTriangleNone">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="weaponTriangleRadioGroup"/>
+        </Property>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="None"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="effectiveLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Effective"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="effectiveYes">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="effectiveRadioGroup"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Yes"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="effectiveNo">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="effectiveRadioGroup"/>
+        </Property>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="No"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="staffLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Staff (without Wraithful Staff)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="staffYes">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="staffRadioGroup"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Yes"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="staffNo">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="staffRadioGroup"/>
+        </Property>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="No"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="statConsideredInput">
+    </Component>
+    <Component class="javax.swing.JLabel" name="statConsideredLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Stat under consideration"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
   </SubComponents>
 </Form>
