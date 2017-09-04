@@ -5,10 +5,14 @@
  */
 package app;
 
-/**
- *
- * @author Joseph
- */
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
+
+// TODO:
+// Shield Pulse reducing damage
+// Wo Dao increasing damage
+
 public class FEHCalcGUI extends javax.swing.JFrame {
 
     /**
@@ -105,14 +109,14 @@ public class FEHCalcGUI extends javax.swing.JFrame {
 
         damageLabel.setText("Damage");
 
-        atkSpecialInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aether (Def/Res x 0.5)", "Astra (Damage x 2.5)", "Bonfire (Def x 0.5 added)", "Chilling Wind (Res x 0.5 added)", "Draconic Aura (Atk x 0.3 added)", "Dragon Fang (Atk x 0.5 added)", "Dragon Gaze (Atk x 0.3 added)", "Glacies (Res x 0.8 added)", "Glimmer (Damage x 1.5)", "Glowing Ember (Def x 0.5 added)", "Iceberg (Res x 0.5 added)", "Ignis (Def x 0.8 added)", "Moonbow (Def/Res x 0.7)", "New Moon (Def/Res x 0.7)", "Night Sky (Def/Res x 0.5)", "Reprisal (Damage Received x 0.3 added)", "Retribution (Damage Received x 0.3 added)", "Vengeance (Damage Received x 0.5 added)" }));
+        atkSpecialInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Aether (Def/Res x 0.5)", "Astra (Damage x 2.5)", "Bonfire (Def x 0.5 added)", "Chilling Wind (Res x 0.5 added)", "Draconic Aura (Atk x 0.3 added)", "Dragon Fang (Atk x 0.5 added)", "Dragon Gaze (Atk x 0.3 added)", "Glacies (Res x 0.8 added)", "Glimmer (Damage x 1.5)", "Glowing Ember (Def x 0.5 added)", "Iceberg (Res x 0.5 added)", "Ignis (Def x 0.8 added)", "Luna (Def/Res x 0.5)", "Moonbow (Def/Res x 0.7)", "New Moon (Def/Res x 0.7)", "Night Sky (Damage x 1.5)", "Reprisal (Damage Received x 0.3 added)", "Retribution (Damage Received x 0.3 added)", "Vengeance (Damage Received x 0.5 added)" }));
         atkSpecialInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atkSpecialInputActionPerformed(evt);
             }
         });
 
-        defSpecialInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aegis (Damage x 0.5)", "Buckler (Damage x 0.3)", "Escutcheon (Damage x 0.3)", "Holy Vestments (Damage  x 0.3)", "Pavise (Damage x 0.5)", "Sacred Cowl (Damage x 0.3)" }));
+        defSpecialInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Aegis (Damage x 0.5)", "Buckler (Damage x 0.3)", "Escutcheon (Damage x 0.3)", "Holy Vestments (Damage x 0.3)", "Pavise (Damage x 0.5)", "Sacred Cowl (Damage x 0.3)" }));
 
         atkSpecialLabel.setLabelFor(atkSpecialInput);
         atkSpecialLabel.setText("Attacking Special");
@@ -312,7 +316,159 @@ public class FEHCalcGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void calcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcButtonActionPerformed
+        int attack = Integer.parseInt(attackInput.getText());
+        int defense = Integer.parseInt(defenseInput.getText());
+        
+        
+        // Effective 
+        if (getSelectedValue(effectiveRadioGroup).equals("Yes")) {
+            attack = (int) (attack * 1.5);
+        }       
+        
+        
+        // Checks for Adept bonus -> Weapon Triangle
+        double triangleEffect = 0.2;
+        if (getSelectedValue(adeptRadioGroup).equals("Adept 1")) {
+            triangleEffect = 0.3;
+        }
+        else if (getSelectedValue(weaponTriangleRadioGroup).equals("Adept 2")) {
+            triangleEffect = 0.35;
+        }   
+        else if (getSelectedValue(weaponTriangleRadioGroup).equals("Adept 3")) {
+            triangleEffect = 0.40;
+        }         
+        
+        if (getSelectedValue(weaponTriangleRadioGroup).equals("Advantage")) {
+            attack = attack + (int)(attack * triangleEffect);
+        }
+        else if (getSelectedValue(weaponTriangleRadioGroup).equals("Disadvantage")) {
+            attack = attack - (int)(attack * triangleEffect);
+        }        
+        
+        
+        // Defensive terrain + Special Skills that lower the Defense
+        double defensiveMultiplier = 0;
+        if (getSelectedValue(defTerrainRadioGroup).equals("Yes")) {
+            defensiveMultiplier += 0.3;
+        }   
+        
+        if (atkSpecialInput.getSelectedItem().equals("Aether (Def/Res x 0.5)")) {
+            defensiveMultiplier -= 0.5;
+        }
+        else if (atkSpecialInput.getSelectedItem().equals("Moonbow (Def/Res x 0.7)")) {
+            defensiveMultiplier -= 0.3;
+        }
+        else if (atkSpecialInput.getSelectedItem().equals("New Moon (Def/Res x 0.7)")) {
+            defensiveMultiplier -= 0.3;
+        }
+        else if (atkSpecialInput.getSelectedItem().equals("Luna (Def/Res x 0.5)")) {
+            defensiveMultiplier -= 0.5;
+        }
+        
+        defense = defense + (int)(defense * defensiveMultiplier);
+        
+        
+        // Add to attack depending on Special Skill
+        if (atkSpecialInput.getSelectedItem().equals("Bonfire (Def x 0.5 added)")) {
+            int temp = Integer.parseInt(statConsideredInput.getText());
+            attack += (int) temp * 0.5;
+        }
+        else if (atkSpecialInput.getSelectedItem().equals("Chilling Wind (Res x 0.5 added)")) {
+            int temp = Integer.parseInt(statConsideredInput.getText());
+            attack += (int) temp * 0.5;
+        }     
+        else if (atkSpecialInput.getSelectedItem().equals("Draconic Aura (Atk x 0.3 added)")) {
+            int temp = Integer.parseInt(statConsideredInput.getText());
+            attack += (int) temp * 0.3;
+        } 
+        else if (atkSpecialInput.getSelectedItem().equals("Dragon Fang (Atk x 0.5 added)")) {
+            int temp = Integer.parseInt(statConsideredInput.getText());
+            attack += (int) temp * 0.5;
+        }         
+        else if (atkSpecialInput.getSelectedItem().equals("Dragon Gaze (Atk x 0.3 added)")) {
+            int temp = Integer.parseInt(statConsideredInput.getText());
+            attack += (int) temp * 0.3;
+        } 
+        else if (atkSpecialInput.getSelectedItem().equals("Glacies (Res x 0.8 added)")) {
+            int temp = Integer.parseInt(statConsideredInput.getText());
+            attack += (int) temp * 0.8;
+        }         
+        else if (atkSpecialInput.getSelectedItem().equals("Glowing Ember (Def x 0.5 added)")) {
+            int temp = Integer.parseInt(statConsideredInput.getText());
+            attack += (int) temp * 0.5;
+        }         
+        else if (atkSpecialInput.getSelectedItem().equals("Iceberg (Res x 0.5 added)")) {
+            int temp = Integer.parseInt(statConsideredInput.getText());
+            attack += (int) temp * 0.5;
+        } 
+        else if (atkSpecialInput.getSelectedItem().equals("Ignis (Def x 0.8 added)")) {
+            int temp = Integer.parseInt(statConsideredInput.getText());
+            attack += (int) temp * 0.8;
+        }    
+        else if (atkSpecialInput.getSelectedItem().equals("Reprisal (Damage Received x 0.3 added)")) {
+            int temp = Integer.parseInt(statConsideredInput.getText());
+            attack += (int) temp * 0.3;
+        } 
+        else if (atkSpecialInput.getSelectedItem().equals("Retribution (Damage Received x 0.3 added)")) {
+            int temp = Integer.parseInt(statConsideredInput.getText());
+            attack += (int) temp * 0.3;
+        } 
+        else if (atkSpecialInput.getSelectedItem().equals("Vengeance (Damage Received x 0.5 added)")) {
+            int temp = Integer.parseInt(statConsideredInput.getText());
+            attack += (int) temp * 0.5;
+        }         
+        
+        
+        // Getting damage done START
+        int damage = attack - defense;
+        
+        // Staff - Damage / 2
+        if (getSelectedValue(staffRadioGroup).equals("Yes")) {
+            damage = (int)(damage * 0.5);
+        }
+        
+        // Damage-based offensive Special Skills
+        if (atkSpecialInput.getSelectedItem().equals("Astra (Damage x 2.5)")) {
+            damage = (int)(damage * 2.5);
+        }
+        else if (atkSpecialInput.getSelectedItem().equals("Glimmer (Damage x 1.5)")) {
+            damage = (int)(damage * 1.5);
+        }     
+        else if (atkSpecialInput.getSelectedItem().equals("Night Sky (Damage x 1.5)")) {
+            damage = (int)(damage * 1.5);
+        }              
+        
+        // Damage-based defensive Special Skills
+        if (atkSpecialInput.getSelectedItem().equals("Aegis (Damage x 0.5)")) {
+            damage = (int)(damage * 0.5);
+        }
+        else if (atkSpecialInput.getSelectedItem().equals("Buckler (Damage x 0.3)")) {
+            damage = (int)(damage * 0.3);
+        }     
+        else if (atkSpecialInput.getSelectedItem().equals("Escutcheon (Damage x 0.3)")) {
+            damage = (int)(damage * 0.3);
+        }   
+        else if (atkSpecialInput.getSelectedItem().equals("Holy Vestments (Damage x 0.3)")) {
+            damage = (int)(damage * 0.3);
+        }     
+        else if (atkSpecialInput.getSelectedItem().equals("Pavise (Damage x 0.5)")) {
+            damage = (int)(damage * 0.5);
+        }    
+        else if (atkSpecialInput.getSelectedItem().equals("Sacred Cowl (Damage x 0.3)")) {
+            damage = (int)(damage * 0.3);
+        }        
+        
+        
+        // Output damage
+        damageOutput.setText(Integer.toString(damage));
+        
         System.out.println("Calculate Started");
+        System.out.println("Attack: " + attack);
+        System.out.println("Defense: " + defense);
+        
+        
+        System.out.println(getSelectedValue(staffRadioGroup));
+        System.out.println(atkSpecialInput.getSelectedItem());
     }//GEN-LAST:event_calcButtonActionPerformed
 
     private void attackInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attackInputActionPerformed
@@ -331,6 +487,19 @@ public class FEHCalcGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_weaponTriangleDisActionPerformed
 
+    // For getting selected radio button
+    public String getSelectedValue (ButtonGroup buttonGroup) {
+        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+
+        return null;
+    }    
+    
     /**
      * @param args the command line arguments
      */

@@ -272,25 +272,27 @@
     <Component class="javax.swing.JComboBox" name="atkSpecialInput">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="18">
-            <StringItem index="0" value="Aether (Def/Res x 0.5)"/>
-            <StringItem index="1" value="Astra (Damage x 2.5)"/>
-            <StringItem index="2" value="Bonfire (Def x 0.5 added)"/>
-            <StringItem index="3" value="Chilling Wind (Res x 0.5 added)"/>
-            <StringItem index="4" value="Draconic Aura (Atk x 0.3 added)"/>
-            <StringItem index="5" value="Dragon Fang (Atk x 0.5 added)"/>
-            <StringItem index="6" value="Dragon Gaze (Atk x 0.3 added)"/>
-            <StringItem index="7" value="Glacies (Res x 0.8 added)"/>
-            <StringItem index="8" value="Glimmer (Damage x 1.5)"/>
-            <StringItem index="9" value="Glowing Ember (Def x 0.5 added)"/>
-            <StringItem index="10" value="Iceberg (Res x 0.5 added)"/>
-            <StringItem index="11" value="Ignis (Def x 0.8 added)"/>
-            <StringItem index="12" value="Moonbow (Def/Res x 0.7)"/>
-            <StringItem index="13" value="New Moon (Def/Res x 0.7)"/>
-            <StringItem index="14" value="Night Sky (Def/Res x 0.5)"/>
-            <StringItem index="15" value="Reprisal (Damage Received x 0.3 added)"/>
-            <StringItem index="16" value="Retribution (Damage Received x 0.3 added)"/>
-            <StringItem index="17" value="Vengeance (Damage Received x 0.5 added)"/>
+          <StringArray count="20">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Aether (Def/Res x 0.5)"/>
+            <StringItem index="2" value="Astra (Damage x 2.5)"/>
+            <StringItem index="3" value="Bonfire (Def x 0.5 added)"/>
+            <StringItem index="4" value="Chilling Wind (Res x 0.5 added)"/>
+            <StringItem index="5" value="Draconic Aura (Atk x 0.3 added)"/>
+            <StringItem index="6" value="Dragon Fang (Atk x 0.5 added)"/>
+            <StringItem index="7" value="Dragon Gaze (Atk x 0.3 added)"/>
+            <StringItem index="8" value="Glacies (Res x 0.8 added)"/>
+            <StringItem index="9" value="Glimmer (Damage x 1.5)"/>
+            <StringItem index="10" value="Glowing Ember (Def x 0.5 added)"/>
+            <StringItem index="11" value="Iceberg (Res x 0.5 added)"/>
+            <StringItem index="12" value="Ignis (Def x 0.8 added)"/>
+            <StringItem index="13" value="Luna (Def/Res x 0.5)"/>
+            <StringItem index="14" value="Moonbow (Def/Res x 0.7)"/>
+            <StringItem index="15" value="New Moon (Def/Res x 0.7)"/>
+            <StringItem index="16" value="Night Sky (Damage x 1.5)"/>
+            <StringItem index="17" value="Reprisal (Damage Received x 0.3 added)"/>
+            <StringItem index="18" value="Retribution (Damage Received x 0.3 added)"/>
+            <StringItem index="19" value="Vengeance (Damage Received x 0.5 added)"/>
           </StringArray>
         </Property>
       </Properties>
@@ -304,13 +306,14 @@
     <Component class="javax.swing.JComboBox" name="defSpecialInput">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
-            <StringItem index="0" value="Aegis (Damage x 0.5)"/>
-            <StringItem index="1" value="Buckler (Damage x 0.3)"/>
-            <StringItem index="2" value="Escutcheon (Damage x 0.3)"/>
-            <StringItem index="3" value="Holy Vestments (Damage  x 0.3)"/>
-            <StringItem index="4" value="Pavise (Damage x 0.5)"/>
-            <StringItem index="5" value="Sacred Cowl (Damage x 0.3)"/>
+          <StringArray count="7">
+            <StringItem index="0" value="None"/>
+            <StringItem index="1" value="Aegis (Damage x 0.5)"/>
+            <StringItem index="2" value="Buckler (Damage x 0.3)"/>
+            <StringItem index="3" value="Escutcheon (Damage x 0.3)"/>
+            <StringItem index="4" value="Holy Vestments (Damage x 0.3)"/>
+            <StringItem index="5" value="Pavise (Damage x 0.5)"/>
+            <StringItem index="6" value="Sacred Cowl (Damage x 0.3)"/>
           </StringArray>
         </Property>
       </Properties>
