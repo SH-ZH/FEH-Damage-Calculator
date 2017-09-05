@@ -38,15 +38,39 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="defenseInput" linkSize="1" min="-2" pref="47" max="-2" attributes="0"/>
-                          <Component id="attackInput" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="defenseInput" linkSize="1" min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="attackInput" linkSize="3" min="-2" pref="47" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="defenseLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="flatDamageDownInput" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="attackLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="flatDamageUpInput" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="weaponTriangleAd" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="weaponTriangleDis" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="weaponTriangleNone" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="defenseLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="attackLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="flatDamageUpLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="flatDamageDownLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -83,13 +107,6 @@
                               <Component id="effectiveNo" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="effectiveLabel" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="weaponTriangleAd" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="weaponTriangleDis" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="weaponTriangleNone" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Component id="weaponTriangleLabel" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="defTerrainYes" min="-2" max="-2" attributes="0"/>
@@ -101,10 +118,14 @@
                               <Component id="damageOutput" linkSize="1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="damageLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                              <Component id="previousDamageOutput" linkSize="1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="previousDamageLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="calcButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="42" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="50" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -118,11 +139,15 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="attackLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="attackInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="flatDamageUpInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="flatDamageUpLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="defenseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="defenseInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="flatDamageDownInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="flatDamageDownLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="staffLabel" min="-2" max="-2" attributes="0"/>
@@ -183,6 +208,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="damageOutput" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="damageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="previousDamageOutput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="previousDamageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
@@ -231,9 +258,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="attackInput">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="attackInputActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="adeptRadioNone">
       <Properties>
@@ -306,14 +330,15 @@
     <Component class="javax.swing.JComboBox" name="defSpecialInput">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="7">
+          <StringArray count="8">
             <StringItem index="0" value="None"/>
             <StringItem index="1" value="Aegis (Damage x 0.5)"/>
-            <StringItem index="2" value="Buckler (Damage x 0.3)"/>
-            <StringItem index="3" value="Escutcheon (Damage x 0.3)"/>
-            <StringItem index="4" value="Holy Vestments (Damage x 0.3)"/>
+            <StringItem index="2" value="Buckler (Damage x 0.7)"/>
+            <StringItem index="3" value="Escutcheon (Damage x 0.7)"/>
+            <StringItem index="4" value="Holy Vestments (Damage x 0.7)"/>
             <StringItem index="5" value="Pavise (Damage x 0.5)"/>
-            <StringItem index="6" value="Sacred Cowl (Damage x 0.3)"/>
+            <StringItem index="6" value="Sacred Cowl (Damage x 0.7)"/>
+            <StringItem index="7" value="Urvan (Damage x 0.2)"/>
           </StringArray>
         </Property>
       </Properties>
@@ -349,9 +374,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Yes"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="defTerrainYesActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="defTerrainNo">
       <Properties>
@@ -382,9 +404,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Disadvantage"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="weaponTriangleDisActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="weaponTriangleNone">
       <Properties>
@@ -440,6 +459,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="statConsideredInput">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="statConsideredLabel">
       <Properties>
@@ -447,6 +469,36 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JTextField" name="flatDamageUpInput">
+    </Component>
+    <Component class="javax.swing.JTextField" name="flatDamageDownInput">
+    </Component>
+    <Component class="javax.swing.JLabel" name="flatDamageUpLabel">
+      <Properties>
+        <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="flatDamageUpInput"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Flat damage increases"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="flatDamageDownLabel">
+      <Properties>
+        <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="flatDamageDownInput"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Flat damage reductions"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="previousDamageOutput">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="previousDamageLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Previous damage"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

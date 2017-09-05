@@ -9,9 +9,6 @@ import java.util.Enumeration;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 
-// TODO:
-// Shield Pulse reducing damage
-// Wo Dao increasing damage
 
 public class FEHCalcGUI extends javax.swing.JFrame {
 
@@ -68,6 +65,12 @@ public class FEHCalcGUI extends javax.swing.JFrame {
         statConsideredInput = new javax.swing.JTextField();
         statConsideredLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        flatDamageUpInput = new javax.swing.JTextField();
+        flatDamageDownInput = new javax.swing.JTextField();
+        flatDamageUpLabel = new javax.swing.JLabel();
+        flatDamageDownLabel = new javax.swing.JLabel();
+        previousDamageOutput = new javax.swing.JTextField();
+        previousDamageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,12 +88,6 @@ public class FEHCalcGUI extends javax.swing.JFrame {
 
         adeptRadioGroup.add(adeptRadio3);
         adeptRadio3.setText("Adept 3");
-
-        attackInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                attackInputActionPerformed(evt);
-            }
-        });
 
         adeptRadioGroup.add(adeptRadioNone);
         adeptRadioNone.setSelected(true);
@@ -116,7 +113,7 @@ public class FEHCalcGUI extends javax.swing.JFrame {
             }
         });
 
-        defSpecialInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Aegis (Damage x 0.5)", "Buckler (Damage x 0.3)", "Escutcheon (Damage x 0.3)", "Holy Vestments (Damage x 0.3)", "Pavise (Damage x 0.5)", "Sacred Cowl (Damage x 0.3)" }));
+        defSpecialInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Aegis (Damage x 0.5)", "Buckler (Damage x 0.7)", "Escutcheon (Damage x 0.7)", "Holy Vestments (Damage x 0.7)", "Pavise (Damage x 0.5)", "Sacred Cowl (Damage x 0.7)", "Urvan (Damage x 0.2)" }));
 
         atkSpecialLabel.setLabelFor(atkSpecialInput);
         atkSpecialLabel.setText("Attacking Special");
@@ -128,11 +125,6 @@ public class FEHCalcGUI extends javax.swing.JFrame {
 
         defTerrainRadioGroup.add(defTerrainYes);
         defTerrainYes.setText("Yes");
-        defTerrainYes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                defTerrainYesActionPerformed(evt);
-            }
-        });
 
         defTerrainRadioGroup.add(defTerrainNo);
         defTerrainNo.setSelected(true);
@@ -145,11 +137,6 @@ public class FEHCalcGUI extends javax.swing.JFrame {
 
         weaponTriangleRadioGroup.add(weaponTriangleDis);
         weaponTriangleDis.setText("Disadvantage");
-        weaponTriangleDis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                weaponTriangleDisActionPerformed(evt);
-            }
-        });
 
         weaponTriangleRadioGroup.add(weaponTriangleNone);
         weaponTriangleNone.setSelected(true);
@@ -173,7 +160,19 @@ public class FEHCalcGUI extends javax.swing.JFrame {
         staffNo.setSelected(true);
         staffNo.setText("No");
 
+        statConsideredInput.setEnabled(false);
+
         statConsideredLabel.setText("Stat under consideration");
+
+        flatDamageUpLabel.setLabelFor(flatDamageUpInput);
+        flatDamageUpLabel.setText("Flat damage increases");
+
+        flatDamageDownLabel.setLabelFor(flatDamageDownInput);
+        flatDamageDownLabel.setText("Flat damage reductions");
+
+        previousDamageOutput.setEnabled(false);
+
+        previousDamageLabel.setText("Previous damage");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,13 +182,31 @@ public class FEHCalcGUI extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(defenseInput, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(attackInput, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(defenseInput, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(attackInput, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(defenseLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(flatDamageDownInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(attackLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(flatDamageUpInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(weaponTriangleAd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(weaponTriangleDis)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(weaponTriangleNone)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(defenseLabel)
-                            .addComponent(attackLabel))
+                            .addComponent(flatDamageUpLabel)
+                            .addComponent(flatDamageDownLabel))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,12 +237,6 @@ public class FEHCalcGUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(effectiveNo))
                             .addComponent(effectiveLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(weaponTriangleAd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(weaponTriangleDis)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(weaponTriangleNone))
                             .addComponent(weaponTriangleLabel)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(defTerrainYes)
@@ -235,15 +246,21 @@ public class FEHCalcGUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(damageOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(damageLabel))
+                                .addComponent(damageLabel)
+                                .addGap(83, 83, 83)
+                                .addComponent(previousDamageOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(previousDamageLabel))
                             .addComponent(calcButton))
-                        .addGap(0, 42, Short.MAX_VALUE))))
+                        .addGap(0, 50, Short.MAX_VALUE))))
             .addComponent(jSeparator1)
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {damageOutput, defenseInput, statConsideredInput});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {damageOutput, defenseInput, previousDamageOutput, statConsideredInput});
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {atkSpecialInput, defSpecialInput});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {attackInput, flatDamageDownInput, flatDamageUpInput});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,11 +268,15 @@ public class FEHCalcGUI extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(attackLabel)
-                    .addComponent(attackInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(attackInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(flatDamageUpInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(flatDamageUpLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(defenseLabel)
-                    .addComponent(defenseInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(defenseInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(flatDamageDownInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(flatDamageDownLabel))
                 .addGap(18, 18, 18)
                 .addComponent(staffLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -308,7 +329,9 @@ public class FEHCalcGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(damageOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(damageLabel))
+                    .addComponent(damageLabel)
+                    .addComponent(previousDamageOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(previousDamageLabel))
                 .addGap(27, 27, 27))
         );
 
@@ -316,6 +339,51 @@ public class FEHCalcGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void calcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcButtonActionPerformed
+        previousDamageOutput.setText(damageOutput.getText());
+        
+        int damage = damageCalculation();        
+        
+        // Output damage
+        damageOutput.setText(Integer.toString(damage));
+        
+        System.out.println("Calculate Started");
+    }//GEN-LAST:event_calcButtonActionPerformed
+
+    private void atkSpecialInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atkSpecialInputActionPerformed
+        if (atkSpecialInput.getSelectedItem().equals("Bonfire (Def x 0.5 added)") ||
+                atkSpecialInput.getSelectedItem().equals("Chilling Wind (Res x 0.5 added)") ||
+                atkSpecialInput.getSelectedItem().equals("Draconic Aura (Atk x 0.3 added)") ||
+                atkSpecialInput.getSelectedItem().equals("Dragon Fang (Atk x 0.5 added)") ||
+                atkSpecialInput.getSelectedItem().equals("Dragon Gaze (Atk x 0.3 added)") ||
+                atkSpecialInput.getSelectedItem().equals("Glacies (Res x 0.8 added)") ||
+                atkSpecialInput.getSelectedItem().equals("Glowing Ember (Def x 0.5 added)") ||
+                atkSpecialInput.getSelectedItem().equals("Iceberg (Res x 0.5 added)") ||
+                atkSpecialInput.getSelectedItem().equals("Ignis (Def x 0.8 added)") ||
+                atkSpecialInput.getSelectedItem().equals("Reprisal (Damage Received x 0.3 added)") ||
+                atkSpecialInput.getSelectedItem().equals("Retribution (Damage Received x 0.3 added)") ||
+                atkSpecialInput.getSelectedItem().equals("Vengeance (Damage Received x 0.5 added)")) {
+            statConsideredInput.setEnabled(true);
+        }     
+        else {
+            statConsideredInput.setEnabled(false);
+        }
+    }//GEN-LAST:event_atkSpecialInputActionPerformed
+
+    // For getting selected radio button
+    public String getSelectedValue (ButtonGroup buttonGroup) {
+        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+
+        return null;
+    }    
+    
+    // For calculating damage
+    public Integer damageCalculation () {
         int attack = Integer.parseInt(attackInput.getText());
         int defense = Integer.parseInt(defenseInput.getText());
         
@@ -331,10 +399,10 @@ public class FEHCalcGUI extends javax.swing.JFrame {
         if (getSelectedValue(adeptRadioGroup).equals("Adept 1")) {
             triangleEffect = 0.3;
         }
-        else if (getSelectedValue(weaponTriangleRadioGroup).equals("Adept 2")) {
+        else if (getSelectedValue(adeptRadioGroup).equals("Adept 2")) {
             triangleEffect = 0.35;
         }   
-        else if (getSelectedValue(weaponTriangleRadioGroup).equals("Adept 3")) {
+        else if (getSelectedValue(adeptRadioGroup).equals("Adept 3")) {
             triangleEffect = 0.40;
         }         
         
@@ -422,6 +490,11 @@ public class FEHCalcGUI extends javax.swing.JFrame {
         // Getting damage done START
         int damage = attack - defense;
         
+        // Wo Dao and such damage-adding effects
+        if (!(flatDamageUpInput.getText().isEmpty())) {
+            damage += Integer.parseInt(flatDamageUpInput.getText());
+        }
+        
         // Staff - Damage / 2
         if (getSelectedValue(staffRadioGroup).equals("Yes")) {
             damage = (int)(damage * 0.5);
@@ -439,66 +512,35 @@ public class FEHCalcGUI extends javax.swing.JFrame {
         }              
         
         // Damage-based defensive Special Skills
-        if (atkSpecialInput.getSelectedItem().equals("Aegis (Damage x 0.5)")) {
-            damage = (int)(damage * 0.5);
+        if (defSpecialInput.getSelectedItem().equals("Aegis (Damage x 0.5)")) {
+            damage = damage - (int)(damage * 0.5);
         }
-        else if (atkSpecialInput.getSelectedItem().equals("Buckler (Damage x 0.3)")) {
-            damage = (int)(damage * 0.3);
+        else if (defSpecialInput.getSelectedItem().equals("Buckler (Damage x 0.7)")) {
+            damage = damage - (int)(damage * 0.3);
         }     
-        else if (atkSpecialInput.getSelectedItem().equals("Escutcheon (Damage x 0.3)")) {
-            damage = (int)(damage * 0.3);
+        else if (defSpecialInput.getSelectedItem().equals("Escutcheon (Damage x 0.7)")) {
+            damage = damage - (int)(damage * 0.3);
         }   
-        else if (atkSpecialInput.getSelectedItem().equals("Holy Vestments (Damage x 0.3)")) {
-            damage = (int)(damage * 0.3);
+        else if (defSpecialInput.getSelectedItem().equals("Holy Vestments (Damage x 0.7)")) {
+            damage = damage - (int)(damage * 0.3);
         }     
-        else if (atkSpecialInput.getSelectedItem().equals("Pavise (Damage x 0.5)")) {
-            damage = (int)(damage * 0.5);
+        else if (defSpecialInput.getSelectedItem().equals("Pavise (Damage x 0.5)")) {
+            damage = damage - (int)(damage * 0.5);
         }    
-        else if (atkSpecialInput.getSelectedItem().equals("Sacred Cowl (Damage x 0.3)")) {
-            damage = (int)(damage * 0.3);
-        }        
+        else if (defSpecialInput.getSelectedItem().equals("Sacred Cowl (Damage x 0.7)")) {
+            damage = damage - (int)(damage * 0.3);
+        }
+        else if (defSpecialInput.getSelectedItem().equals("Urvan (Damage x 0.2)")) {
+            damage = damage - (int)(damage * 0.8);
+        }
         
-        
-        // Output damage
-        damageOutput.setText(Integer.toString(damage));
-        
-        System.out.println("Calculate Started");
-        System.out.println("Attack: " + attack);
-        System.out.println("Defense: " + defense);
-        
-        
-        System.out.println(getSelectedValue(staffRadioGroup));
-        System.out.println(atkSpecialInput.getSelectedItem());
-    }//GEN-LAST:event_calcButtonActionPerformed
-
-    private void attackInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attackInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_attackInputActionPerformed
-
-    private void atkSpecialInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atkSpecialInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_atkSpecialInputActionPerformed
-
-    private void defTerrainYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defTerrainYesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_defTerrainYesActionPerformed
-
-    private void weaponTriangleDisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weaponTriangleDisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_weaponTriangleDisActionPerformed
-
-    // For getting selected radio button
-    public String getSelectedValue (ButtonGroup buttonGroup) {
-        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
-            AbstractButton button = buttons.nextElement();
-
-            if (button.isSelected()) {
-                return button.getText();
-            }
+        // Shield Pulse and such damage-decreasing effects
+        if (!(flatDamageDownInput.getText().isEmpty())) {
+            damage -= Integer.parseInt(flatDamageDownInput.getText());
         }
 
-        return null;
-    }    
+        return damage;
+    }
     
     /**
      * @param args the command line arguments
@@ -562,7 +604,13 @@ public class FEHCalcGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton effectiveNo;
     private javax.swing.ButtonGroup effectiveRadioGroup;
     private javax.swing.JRadioButton effectiveYes;
+    private javax.swing.JTextField flatDamageDownInput;
+    private javax.swing.JLabel flatDamageDownLabel;
+    private javax.swing.JTextField flatDamageUpInput;
+    private javax.swing.JLabel flatDamageUpLabel;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel previousDamageLabel;
+    private javax.swing.JTextField previousDamageOutput;
     private javax.swing.JLabel staffLabel;
     private javax.swing.JRadioButton staffNo;
     private javax.swing.ButtonGroup staffRadioGroup;
