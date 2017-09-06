@@ -342,6 +342,9 @@ public class FEHCalcGUI extends javax.swing.JFrame {
         previousDamageOutput.setText(damageOutput.getText());
         
         int damage = damageCalculation();        
+        if (damage < 0) {
+            damage = 0;
+        }
         
         // Output damage
         damageOutput.setText(Integer.toString(damage));
