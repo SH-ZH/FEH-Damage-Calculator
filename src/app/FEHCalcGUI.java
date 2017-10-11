@@ -113,7 +113,7 @@ public class FEHCalcGUI extends javax.swing.JFrame {
             }
         });
 
-        defSpecialInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Aegis (Damage x 0.5)", "Buckler (Damage x 0.7)", "Escutcheon (Damage x 0.7)", "Holy Vestments (Damage x 0.7)", "Pavise (Damage x 0.5)", "Sacred Cowl (Damage x 0.7)", "Urvan (Damage x 0.2)" }));
+        defSpecialInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Aegis (Damage x 0.5)", "Buckler (Damage x 0.7)", "Escutcheon (Damage x 0.7)", "Holy Vestments (Damage x 0.7)", "Pavise (Damage x 0.5)", "Sacred Cowl (Damage x 0.7)", "Urvan (Damage x 0.2)", "Sacred Seal 1 (Damage x 0.7)", "Sacred Seal 2 (Damage x 0.5)", "Sacred Seal 3 (Damage x 0.2)" }));
 
         atkSpecialLabel.setLabelFor(atkSpecialInput);
         atkSpecialLabel.setText("Attacking Special");
@@ -536,6 +536,15 @@ public class FEHCalcGUI extends javax.swing.JFrame {
         else if (defSpecialInput.getSelectedItem().equals("Urvan (Damage x 0.2)")) {
             damage = damage - (int)(damage * 0.8);
         }
+        else if (defSpecialInput.getSelectedItem().equals("Sacred Seal 1 (Damage x 0.7)")) {
+            damage = damage - (int)(damage * 0.3);
+        }
+        else if (defSpecialInput.getSelectedItem().equals("Sacred Seal 2 (Damage x 0.5)")) {
+            damage = damage - (int)(damage * 0.5);
+        }
+        else if (defSpecialInput.getSelectedItem().equals("Sacred Seal 3 (Damage x 0.2)")) {
+            damage = damage - (int)(damage * 0.8);
+        }              
         
         // Shield Pulse and such damage-decreasing effects
         if (!(flatDamageDownInput.getText().isEmpty())) {
