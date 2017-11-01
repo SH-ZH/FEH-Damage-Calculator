@@ -71,6 +71,10 @@ public class FEHCalcGUI extends javax.swing.JFrame {
         flatDamageDownLabel = new javax.swing.JLabel();
         previousDamageOutput = new javax.swing.JTextField();
         previousDamageLabel = new javax.swing.JLabel();
+        attackingSpecialPercentField = new javax.swing.JTextField();
+        attackingSpecialPercentLabel = new javax.swing.JLabel();
+        defendingSpecialPercentField = new javax.swing.JTextField();
+        defendingSpecialPercentLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,14 +110,14 @@ public class FEHCalcGUI extends javax.swing.JFrame {
 
         damageLabel.setText("Damage");
 
-        atkSpecialInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Aether (Def/Res x 0.5)", "Astra (Damage x 2.5)", "Bonfire (Def x 0.5 added)", "Chilling Wind (Res x 0.5 added)", "Draconic Aura (Atk x 0.3 added)", "Dragon Fang (Atk x 0.5 added)", "Dragon Gaze (Atk x 0.3 added)", "Glacies (Res x 0.8 added)", "Glimmer (Damage x 1.5)", "Glowing Ember (Def x 0.5 added)", "Iceberg (Res x 0.5 added)", "Ignis (Def x 0.8 added)", "Luna (Def/Res x 0.5)", "Moonbow (Def/Res x 0.7)", "New Moon (Def/Res x 0.7)", "Night Sky (Damage x 1.5)", "Reprisal (Damage Received x 0.3 added)", "Retribution (Damage Received x 0.3 added)", "Vengeance (Damage Received x 0.5 added)" }));
+        atkSpecialInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Stat added to damage", "Damage multiplied", "Def/Res reduction" }));
         atkSpecialInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atkSpecialInputActionPerformed(evt);
             }
         });
 
-        defSpecialInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Aegis (Damage x 0.5)", "Buckler (Damage x 0.7)", "Escutcheon (Damage x 0.7)", "Holy Vestments (Damage x 0.7)", "Pavise (Damage x 0.5)", "Sacred Cowl (Damage x 0.7)", "Urvan (Damage x 0.2)", "Sacred Seal 1 (Damage x 0.7)", "Sacred Seal 2 (Damage x 0.5)", "Sacred Seal 3 (Damage x 0.2)" }));
+        defSpecialInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Damage Reduction" }));
 
         atkSpecialLabel.setLabelFor(atkSpecialInput);
         atkSpecialLabel.setText("Attacking Special");
@@ -174,6 +178,10 @@ public class FEHCalcGUI extends javax.swing.JFrame {
 
         previousDamageLabel.setText("Previous damage");
 
+        attackingSpecialPercentLabel.setText("%");
+
+        defendingSpecialPercentLabel.setText("%");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -210,7 +218,6 @@ public class FEHCalcGUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(defSpecialInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(defSpecialLabel)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(statConsideredInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,7 +233,6 @@ public class FEHCalcGUI extends javax.swing.JFrame {
                                 .addComponent(adeptRadioNone))
                             .addComponent(adeptLabel)
                             .addComponent(atkSpecialLabel)
-                            .addComponent(atkSpecialInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(staffYes)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -251,7 +257,21 @@ public class FEHCalcGUI extends javax.swing.JFrame {
                                 .addComponent(previousDamageOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(previousDamageLabel))
-                            .addComponent(calcButton))
+                            .addComponent(calcButton)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(defSpecialInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(defendingSpecialPercentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(atkSpecialInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(attackingSpecialPercentField, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(attackingSpecialPercentLabel)
+                                    .addComponent(defendingSpecialPercentLabel))))
                         .addGap(0, 50, Short.MAX_VALUE))))
             .addComponent(jSeparator1)
         );
@@ -261,6 +281,8 @@ public class FEHCalcGUI extends javax.swing.JFrame {
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {atkSpecialInput, defSpecialInput});
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {attackInput, flatDamageDownInput, flatDamageUpInput});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {attackingSpecialPercentField, defendingSpecialPercentField});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,7 +335,10 @@ public class FEHCalcGUI extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(atkSpecialLabel)
                 .addGap(5, 5, 5)
-                .addComponent(atkSpecialInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(atkSpecialInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(attackingSpecialPercentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(attackingSpecialPercentLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(statConsideredInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,7 +346,10 @@ public class FEHCalcGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(defSpecialLabel)
                 .addGap(5, 5, 5)
-                .addComponent(defSpecialInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(defSpecialInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(defendingSpecialPercentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(defendingSpecialPercentLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -353,18 +381,7 @@ public class FEHCalcGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_calcButtonActionPerformed
 
     private void atkSpecialInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atkSpecialInputActionPerformed
-        if (atkSpecialInput.getSelectedItem().equals("Bonfire (Def x 0.5 added)") ||
-                atkSpecialInput.getSelectedItem().equals("Chilling Wind (Res x 0.5 added)") ||
-                atkSpecialInput.getSelectedItem().equals("Draconic Aura (Atk x 0.3 added)") ||
-                atkSpecialInput.getSelectedItem().equals("Dragon Fang (Atk x 0.5 added)") ||
-                atkSpecialInput.getSelectedItem().equals("Dragon Gaze (Atk x 0.3 added)") ||
-                atkSpecialInput.getSelectedItem().equals("Glacies (Res x 0.8 added)") ||
-                atkSpecialInput.getSelectedItem().equals("Glowing Ember (Def x 0.5 added)") ||
-                atkSpecialInput.getSelectedItem().equals("Iceberg (Res x 0.5 added)") ||
-                atkSpecialInput.getSelectedItem().equals("Ignis (Def x 0.8 added)") ||
-                atkSpecialInput.getSelectedItem().equals("Reprisal (Damage Received x 0.3 added)") ||
-                atkSpecialInput.getSelectedItem().equals("Retribution (Damage Received x 0.3 added)") ||
-                atkSpecialInput.getSelectedItem().equals("Vengeance (Damage Received x 0.5 added)")) {
+        if (atkSpecialInput.getSelectedItem().equals("Stat added to damage")) {
             statConsideredInput.setEnabled(true);
         }     
         else {
@@ -423,72 +440,23 @@ public class FEHCalcGUI extends javax.swing.JFrame {
             defensiveMultiplier += 0.3;
         }   
         
-        if (atkSpecialInput.getSelectedItem().equals("Aether (Def/Res x 0.5)")) {
-            defensiveMultiplier -= 0.5;
-        }
-        else if (atkSpecialInput.getSelectedItem().equals("Moonbow (Def/Res x 0.7)")) {
-            defensiveMultiplier -= 0.3;
-        }
-        else if (atkSpecialInput.getSelectedItem().equals("New Moon (Def/Res x 0.7)")) {
-            defensiveMultiplier -= 0.3;
-        }
-        else if (atkSpecialInput.getSelectedItem().equals("Luna (Def/Res x 0.5)")) {
-            defensiveMultiplier -= 0.5;
+        if (atkSpecialInput.getSelectedItem().equals("Def/Res reduction") && !attackingSpecialPercentField.getText().isEmpty()) {
+            int statPercent = Integer.parseInt(attackingSpecialPercentField.getText());
+            double statPercentasPercent = statPercent / 100.0;
+            
+            defensiveMultiplier -= statPercentasPercent;
         }
         
         defense = defense + (int)(defense * defensiveMultiplier);
         
         
         // Add to attack depending on Special Skill
-        if (atkSpecialInput.getSelectedItem().equals("Bonfire (Def x 0.5 added)")) {
+        if (atkSpecialInput.getSelectedItem().equals("Stat added to damage")  && !attackingSpecialPercentField.getText().isEmpty() && !statConsideredInput.getText().isEmpty()) {
             int temp = Integer.parseInt(statConsideredInput.getText());
-            attack += (int) temp * 0.5;
-        }
-        else if (atkSpecialInput.getSelectedItem().equals("Chilling Wind (Res x 0.5 added)")) {
-            int temp = Integer.parseInt(statConsideredInput.getText());
-            attack += (int) temp * 0.5;
-        }     
-        else if (atkSpecialInput.getSelectedItem().equals("Draconic Aura (Atk x 0.3 added)")) {
-            int temp = Integer.parseInt(statConsideredInput.getText());
-            attack += (int) temp * 0.3;
-        } 
-        else if (atkSpecialInput.getSelectedItem().equals("Dragon Fang (Atk x 0.5 added)")) {
-            int temp = Integer.parseInt(statConsideredInput.getText());
-            attack += (int) temp * 0.5;
-        }         
-        else if (atkSpecialInput.getSelectedItem().equals("Dragon Gaze (Atk x 0.3 added)")) {
-            int temp = Integer.parseInt(statConsideredInput.getText());
-            attack += (int) temp * 0.3;
-        } 
-        else if (atkSpecialInput.getSelectedItem().equals("Glacies (Res x 0.8 added)")) {
-            int temp = Integer.parseInt(statConsideredInput.getText());
-            attack += (int) temp * 0.8;
-        }         
-        else if (atkSpecialInput.getSelectedItem().equals("Glowing Ember (Def x 0.5 added)")) {
-            int temp = Integer.parseInt(statConsideredInput.getText());
-            attack += (int) temp * 0.5;
-        }         
-        else if (atkSpecialInput.getSelectedItem().equals("Iceberg (Res x 0.5 added)")) {
-            int temp = Integer.parseInt(statConsideredInput.getText());
-            attack += (int) temp * 0.5;
-        } 
-        else if (atkSpecialInput.getSelectedItem().equals("Ignis (Def x 0.8 added)")) {
-            int temp = Integer.parseInt(statConsideredInput.getText());
-            attack += (int) temp * 0.8;
-        }    
-        else if (atkSpecialInput.getSelectedItem().equals("Reprisal (Damage Received x 0.3 added)")) {
-            int temp = Integer.parseInt(statConsideredInput.getText());
-            attack += (int) temp * 0.3;
-        } 
-        else if (atkSpecialInput.getSelectedItem().equals("Retribution (Damage Received x 0.3 added)")) {
-            int temp = Integer.parseInt(statConsideredInput.getText());
-            attack += (int) temp * 0.3;
-        } 
-        else if (atkSpecialInput.getSelectedItem().equals("Vengeance (Damage Received x 0.5 added)")) {
-            int temp = Integer.parseInt(statConsideredInput.getText());
-            attack += (int) temp * 0.5;
-        }         
-        
+            int statPercent = Integer.parseInt(attackingSpecialPercentField.getText());
+            double statPercentasPercent = statPercent / 100.0;
+            attack += (int) (temp * statPercentasPercent);
+        }                
         
         // Getting damage done START
         int damage = attack - defense;
@@ -504,47 +472,20 @@ public class FEHCalcGUI extends javax.swing.JFrame {
         }
         
         // Damage-based offensive Special Skills
-        if (atkSpecialInput.getSelectedItem().equals("Astra (Damage x 2.5)")) {
-            damage = (int)(damage * 2.5);
-        }
-        else if (atkSpecialInput.getSelectedItem().equals("Glimmer (Damage x 1.5)")) {
-            damage = (int)(damage * 1.5);
-        }     
-        else if (atkSpecialInput.getSelectedItem().equals("Night Sky (Damage x 1.5)")) {
-            damage = (int)(damage * 1.5);
-        }              
+        if (atkSpecialInput.getSelectedItem().equals("Damage multiplied")  && !attackingSpecialPercentField.getText().isEmpty()) {
+            int statPercent = Integer.parseInt(attackingSpecialPercentField.getText());
+            double statPercentasPercent = statPercent / 100.0;
+            
+            damage = (int)(damage * statPercentasPercent);
+        }          
         
         // Damage-based defensive Special Skills
-        if (defSpecialInput.getSelectedItem().equals("Aegis (Damage x 0.5)")) {
-            damage = damage - (int)(damage * 0.5);
-        }
-        else if (defSpecialInput.getSelectedItem().equals("Buckler (Damage x 0.7)")) {
-            damage = damage - (int)(damage * 0.3);
-        }     
-        else if (defSpecialInput.getSelectedItem().equals("Escutcheon (Damage x 0.7)")) {
-            damage = damage - (int)(damage * 0.3);
-        }   
-        else if (defSpecialInput.getSelectedItem().equals("Holy Vestments (Damage x 0.7)")) {
-            damage = damage - (int)(damage * 0.3);
-        }     
-        else if (defSpecialInput.getSelectedItem().equals("Pavise (Damage x 0.5)")) {
-            damage = damage - (int)(damage * 0.5);
-        }    
-        else if (defSpecialInput.getSelectedItem().equals("Sacred Cowl (Damage x 0.7)")) {
-            damage = damage - (int)(damage * 0.3);
-        }
-        else if (defSpecialInput.getSelectedItem().equals("Urvan (Damage x 0.2)")) {
-            damage = damage - (int)(damage * 0.8);
-        }
-        else if (defSpecialInput.getSelectedItem().equals("Sacred Seal 1 (Damage x 0.7)")) {
-            damage = damage - (int)(damage * 0.3);
-        }
-        else if (defSpecialInput.getSelectedItem().equals("Sacred Seal 2 (Damage x 0.5)")) {
-            damage = damage - (int)(damage * 0.5);
-        }
-        else if (defSpecialInput.getSelectedItem().equals("Sacred Seal 3 (Damage x 0.2)")) {
-            damage = damage - (int)(damage * 0.8);
-        }              
+        if (defSpecialInput.getSelectedItem().equals("Damage Reduction") && !defendingSpecialPercentField.getText().isEmpty()) {
+            int statPercent = Integer.parseInt(defendingSpecialPercentField.getText());
+            double statPercentasPercent = statPercent / 100.0;
+            
+            damage = damage - (int)(damage * statPercentasPercent);
+        }          
         
         // Shield Pulse and such damage-decreasing effects
         if (!(flatDamageDownInput.getText().isEmpty())) {
@@ -601,6 +542,8 @@ public class FEHCalcGUI extends javax.swing.JFrame {
     private javax.swing.JLabel atkSpecialLabel;
     private javax.swing.JTextField attackInput;
     private javax.swing.JLabel attackLabel;
+    private javax.swing.JTextField attackingSpecialPercentField;
+    private javax.swing.JLabel attackingSpecialPercentLabel;
     private javax.swing.JButton calcButton;
     private javax.swing.JLabel damageLabel;
     private javax.swing.JTextField damageOutput;
@@ -610,6 +553,8 @@ public class FEHCalcGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton defTerrainNo;
     private javax.swing.ButtonGroup defTerrainRadioGroup;
     private javax.swing.JRadioButton defTerrainYes;
+    private javax.swing.JTextField defendingSpecialPercentField;
+    private javax.swing.JLabel defendingSpecialPercentLabel;
     private javax.swing.JTextField defenseInput;
     private javax.swing.JLabel defenseLabel;
     private javax.swing.JLabel effectiveLabel;

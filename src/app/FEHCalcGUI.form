@@ -76,7 +76,6 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="defSpecialInput" linkSize="2" min="-2" max="-2" attributes="0"/>
                           <Component id="defSpecialLabel" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="statConsideredInput" linkSize="1" min="-2" max="-2" attributes="0"/>
@@ -94,7 +93,6 @@
                           </Group>
                           <Component id="adeptLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="atkSpecialLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="atkSpecialInput" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="staffYes" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -124,6 +122,25 @@
                               <Component id="previousDamageLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="calcButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="defSpecialInput" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="defendingSpecialPercentField" linkSize="4" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="atkSpecialInput" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="attackingSpecialPercentField" linkSize="4" min="-2" pref="58" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="attackingSpecialPercentLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="defendingSpecialPercentLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace min="0" pref="50" max="32767" attributes="0"/>
                   </Group>
@@ -190,7 +207,11 @@
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="atkSpecialLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Component id="atkSpecialInput" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="atkSpecialInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="attackingSpecialPercentField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="attackingSpecialPercentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="statConsideredInput" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -199,7 +220,11 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="defSpecialLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Component id="defSpecialInput" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="defSpecialInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="defendingSpecialPercentField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="defendingSpecialPercentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="19" max="32767" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -296,27 +321,11 @@
     <Component class="javax.swing.JComboBox" name="atkSpecialInput">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="20">
+          <StringArray count="4">
             <StringItem index="0" value="None"/>
-            <StringItem index="1" value="Aether (Def/Res x 0.5)"/>
-            <StringItem index="2" value="Astra (Damage x 2.5)"/>
-            <StringItem index="3" value="Bonfire (Def x 0.5 added)"/>
-            <StringItem index="4" value="Chilling Wind (Res x 0.5 added)"/>
-            <StringItem index="5" value="Draconic Aura (Atk x 0.3 added)"/>
-            <StringItem index="6" value="Dragon Fang (Atk x 0.5 added)"/>
-            <StringItem index="7" value="Dragon Gaze (Atk x 0.3 added)"/>
-            <StringItem index="8" value="Glacies (Res x 0.8 added)"/>
-            <StringItem index="9" value="Glimmer (Damage x 1.5)"/>
-            <StringItem index="10" value="Glowing Ember (Def x 0.5 added)"/>
-            <StringItem index="11" value="Iceberg (Res x 0.5 added)"/>
-            <StringItem index="12" value="Ignis (Def x 0.8 added)"/>
-            <StringItem index="13" value="Luna (Def/Res x 0.5)"/>
-            <StringItem index="14" value="Moonbow (Def/Res x 0.7)"/>
-            <StringItem index="15" value="New Moon (Def/Res x 0.7)"/>
-            <StringItem index="16" value="Night Sky (Damage x 1.5)"/>
-            <StringItem index="17" value="Reprisal (Damage Received x 0.3 added)"/>
-            <StringItem index="18" value="Retribution (Damage Received x 0.3 added)"/>
-            <StringItem index="19" value="Vengeance (Damage Received x 0.5 added)"/>
+            <StringItem index="1" value="Stat added to damage"/>
+            <StringItem index="2" value="Damage multiplied"/>
+            <StringItem index="3" value="Def/Res reduction"/>
           </StringArray>
         </Property>
       </Properties>
@@ -330,18 +339,9 @@
     <Component class="javax.swing.JComboBox" name="defSpecialInput">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="11">
+          <StringArray count="2">
             <StringItem index="0" value="None"/>
-            <StringItem index="1" value="Aegis (Damage x 0.5)"/>
-            <StringItem index="2" value="Buckler (Damage x 0.7)"/>
-            <StringItem index="3" value="Escutcheon (Damage x 0.7)"/>
-            <StringItem index="4" value="Holy Vestments (Damage x 0.7)"/>
-            <StringItem index="5" value="Pavise (Damage x 0.5)"/>
-            <StringItem index="6" value="Sacred Cowl (Damage x 0.7)"/>
-            <StringItem index="7" value="Urvan (Damage x 0.2)"/>
-            <StringItem index="8" value="Sacred Seal 1 (Damage x 0.7)"/>
-            <StringItem index="9" value="Sacred Seal 2 (Damage x 0.5)"/>
-            <StringItem index="10" value="Sacred Seal 3 (Damage x 0.2)"/>
+            <StringItem index="1" value="Damage Reduction"/>
           </StringArray>
         </Property>
       </Properties>
@@ -501,6 +501,20 @@
     <Component class="javax.swing.JLabel" name="previousDamageLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Previous damage"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="attackingSpecialPercentField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="attackingSpecialPercentLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="%"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="defendingSpecialPercentField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="defendingSpecialPercentLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="%"/>
       </Properties>
     </Component>
   </SubComponents>
